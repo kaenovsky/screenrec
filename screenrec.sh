@@ -34,15 +34,14 @@ echo $checkScreenSize
 echo '========'
 echo
 
-sleep 1
+sleep 0.5
 
-echo
 echo 'Reminder: stop ffmpeg recording by pressing ctrl + c'
 echo
 echo '::::: screen recording is about to start :::::'
 echo
 
-sleep 1
+sleep 0.5
 
 confirm() {
   local _prompt _response
@@ -54,6 +53,13 @@ confirm() {
     case "$_response" in
       [Yy][Ee][Ss]|[Yy]) # Yes or Y (case-insensitive).
         ffmpeg -y -video_size $checkScreenSize -loglevel error -framerate 30 -f x11grab -i $DISPLAY+0,0 -c:v libx264 -qp 0 -preset ultrafast $DIR/output`date +%H%M%S`.mp4
+        echo
+        echo '::::: end of recording :::::' 
+        echo
+        echo 'Your file should be here' $DIR/output`date +%H%M%S`.mp4
+        echo
+        echo 'Have a good one :)'
+        echo
         ;;
       [Nn][Oo]|[Nn])  # No or N.
         return 1
@@ -64,11 +70,3 @@ confirm() {
 }
 
 confirm
-
-echo
-echo '::::: end of recording :::::' 
-echo
-echo 'Your file should be here' $DIR/output`date +%H%M%S`.mp4
-echo
-echo 'Have a good one :)'
-echo
