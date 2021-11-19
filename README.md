@@ -31,4 +31,4 @@ And run it:
 ```
 First time you run this it will create a new directory inside your user's home directory to save your files there.
 
-Feel free to change any of the variables to get your recorded videos however you want them or changing the output directory.
+Feel free to change any of the variables to get your recorded videos however you want or changing the output directory.
